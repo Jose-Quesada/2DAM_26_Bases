@@ -1,0 +1,27 @@
+<style>
+  nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #212121;
+    color: white;
+    padding: 10px;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+  /* Estilo que se aplicará automáticamente al enlace activo */
+  nav a.rojo {
+    color: #f87171;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>
+
+<nav>
+  <a routerLink="/"
+  routerLinkActive="rojo"
+  [routerLinkActiveOptions]="{ exact: true }"
+  >Contador</a>
+  <a [routerLink]="['/hero']" routerLinkActive="rojo">Hero</a>
+</nav>
