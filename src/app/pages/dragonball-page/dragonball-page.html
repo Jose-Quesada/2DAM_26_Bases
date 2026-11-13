@@ -1,0 +1,45 @@
+<h1>DragonBall Page </h1>
+<hr/>
+
+<section class="row">
+  <!-- 1. Columna del Formulario (Estructura estática inicial) -->
+ <div class="col-12 col-sm-6">
+
+   <app-character-add (newCharacter)="dragonballService.addCharacter($event)"/>
+
+ </div>
+
+  <!-- 2. Columna del Listado (Datos de muestra estáticos) -->
+  <div class="col-12 col-sm-6">
+    <h3>Listado de Personajes</h3>
+    <dragonball-character-list
+    [characters]="dragonballService.characters()"
+    (selectCharacter)="selectedCharacter.set($event)"/>
+  </div>
+</section>
+<section class="row mt-4">
+  <div class="col-12">
+    @if (selectedCharacter(); as character) {
+      @if (selectedCharacter(); as character) {
+  <!-- Botón de prueba para demostrar el cambio desde el padre hacia el hijo -->
+  <button
+    type="button"
+    class="btn btn-warning mb-3"
+    (click)="boostSelectedFromParent()"
+  >
+    🔥 Modificar poder desde el Padre (+500)
+  </button>
+
+  <dragonball-character-detail [character]="character" />
+}
+      <dragonball-character-detail [character]="character" />
+    } @else {
+      <div class="alert alert-info d-flex align-items-center" role="alert">
+        <span class="fs-4 me-2">💡</span>
+        <div>
+          <strong>Panel de Detalle:</strong> Haz clic en el botón <em>"Detalles"</em> de cualquier guerrero de la lista para ver su tarjeta interactiva y experimentar el comportamiento de <code>linkedSignal()</code>.
+        </div>
+      </div>
+    }
+  </div>
+</section>

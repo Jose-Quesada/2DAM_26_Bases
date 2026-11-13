@@ -1,0 +1,31 @@
+<h3>{{ listName() }}</h3>
+
+<ul class="list-group">
+  @for (character of characters(); track character.id; let idx = $index) {
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>#{{ idx + 1 }}</strong> - {{ character.name }}
+      </div>
+      <span
+        class="badge"
+        [class.text-bg-danger]="character.power > 9000"
+        [class.text-bg-primary]="character.power <= 9000"
+      >
+        {{ character.power }}
+      </span>
+
+       <!-- Botón interactivo que emite el personaje seleccionado -->
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-primary"
+          (click)="selectCharacter.emit(character)"
+        >
+          Detalles
+        </button>
+    </li>
+  } @empty {
+    <li class="list-group-item list-group-item-secondary">
+      No hay personajes registrados en la lista.
+    </li>
+  }
+</ul>
